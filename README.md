@@ -26,9 +26,9 @@ Nullmailer can be configured via environment variables
       NULLMAILER_MAILNAME: pihole.from.home
 ```
 
-The **Pihole Version** can be chosen via the build arg `PIHOLE_VERSION` in the docker-compose
+The **Pihole Version** can be chosen via the build arg `PIHOLE_VERSION` (see docker-compose)
 
-The **ethercodes** will be update on reboot with a fresh download from `https://linuxnet.ca/ieee/oui/ethercodes.dat`
+The **ethercodes** will be updated on reboot with a recent version downloaded from `https://linuxnet.ca/ieee/oui/ethercodes.dat`
 
 ## License Info
 
