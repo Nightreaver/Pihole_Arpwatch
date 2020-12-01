@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-# fir fox piholes missing logrotate - dont wanna have spam mailss
+# fix for piholes missing logrotate - dont wanna have spam mailss
 :> /etc/pihole/logrotate

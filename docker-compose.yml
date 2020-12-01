@@ -14,4 +14,6 @@ services:
       NULLMAILER_SERVER_PASS: S3cr3tPa55
       NULLMAILER_RECEIVER: user@gimail.com
       NULLMAILER_MAILNAME: pihole.from.home
+    volumes:
+      - ./arpwatch:/var/lib/arpwatch/:rw
     network_mode: host    
