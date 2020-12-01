@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+s6-echo "Starting arpwatch"
+start-stop-daemon --start --pidfile /var/run/arpwatch.pid --remove-pidfile --exec /usr/sbin/arpwatch -- -u arpwatch -N -z 169.254.0.0/255.255.0.0
+ps h -C arpwatch -o pid,args | awk "/$IFACE/ { print \$1 }" > /var/run/arpwatch.pid
+
+while start-stop-daemon --status --pidfile /var/run/arpwatch.pid ; [ $? -eq 0 ]; do
+  sleep 300
+done

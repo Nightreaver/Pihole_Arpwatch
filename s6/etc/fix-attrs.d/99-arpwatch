@@ -1,0 +1,2 @@
+/var/log/arpwatch true nobody,32768:32768 0644 2700
+/var/lib/arpwatch true arpwatch 0777 2777

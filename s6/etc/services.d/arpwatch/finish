@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+s6-echo "Stopping arpwatch"
+start-stop-daemon --stop --pidfile /var/run/arpwatch.pid --oknodo

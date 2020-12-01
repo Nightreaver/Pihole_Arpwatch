@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+
+mkdir -p /var/log/arpwatch
+chown nobody:nogroup /var/log/arpwatch
+
+if [ ! -f /var/lib/arpwatch/arp.dat ]; then
+    :> /var/lib/arpwatch/arp.dat    
+fi
+
+echo "[✓] Pulling latest ethercodes.db from linuxnet.ca"
+curl -L -so /usr/share/arpwatch/ethercodes.dat https://linuxnet.ca/ieee/oui/ethercodes.dat

@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  arpwatch:
+    build: 
+      context: .
+      args:
+        PIHOLE_VERSION: v5.1.2
+    container_name: arpwatch
+    environment:
+      NULLMAILER_SERVER: mailhost.com
+      NULLMAILER_SERVER_ENCRYPTION: starttls
+      NULLMAILER_SERVER_PORT: 25
+      NULLMAILER_SERVER_USER: user@mailhost.com
+      NULLMAILER_SERVER_PASS: S3cr3tPa55
+      NULLMAILER_RECEIVER: user@gimail.com
+      NULLMAILER_MAILNAME: pihole.from.home
+    network_mode: host    

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# creating config dir
+mkdir -p /etc/nullmailer
+
+# creating configs
+
+NULLMAILER_REMOTE="$NULLMAILER_SERVER smtp"
+
+if [[ "x$NULLMAILER_SERVER_ENCRYPTION" == "xnone" ]]; then
+	# skipping
+	NULLMAILER_REMOTE="$NULLMAILER_REMOTE"
+elif [[ "x$NULLMAILER_SERVER_ENCRYPTION" == "xstarttls" ]]; then
+	NULLMAILER_REMOTE="$NULLMAILER_REMOTE --starttls"
+else
+    NULLMAILER_REMOTE="$NULLMAILER_REMOTE --ssl"
+fi
+
+if [[ ! -z $NULLMAILER_SERVER_PORT ]]; then
+	NULLMAILER_REMOTE="$NULLMAILER_REMOTE --port=$NULLMAILER_SERVER_PORT"
+fi
+
+if [[ ! -z $NULLMAILER_SERVER_USER ]]; then
+        NULLMAILER_REMOTE="$NULLMAILER_REMOTE --user=$NULLMAILER_SERVER_USER"
+fi
+
+if [[ ! -z $NULLMAILER_SERVER_PASS ]]; then
+	NULLMAILER_REMOTE="$NULLMAILER_REMOTE --pass=$NULLMAILER_SERVER_PASS"
+fi
+
+if [[ "x$NULLMAILER_SERVER_INSECURE" == "xtrue" ]]; then
+	NULLMAILER_REMOTE="$NULLMAILER_REMOTE --insecure"
+fi
+
+echo $NULLMAILER_REMOTE > /etc/nullmailer/remotes
+chmod 600 /etc/nullmailer/remotes
+
+echo "3600" > /etc/nullmailer/pausetime
+echo "30" > /etc/nullmailer/sendtimeout
+echo $NULLMAILER_RECEIVER > /etc/nullmailer/adminaddr
+echo $NULLMAILER_MAILNAME > /etc/mailname
+
+# creating trigger file - need to be done with mkfifo
+mkfifo /var/spool/nullmailer/trigger
+chmod 0622 /var/spool/nullmailer/trigger
