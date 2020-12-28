@@ -1,6 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 mkdir -p /var/log/arpwatch
+mkdir -p /usr/share/arpwatch
+
 chown nobody:nogroup /var/log/arpwatch
 
 if [ ! -f /var/lib/arpwatch/arp.dat ]; then
