@@ -9,8 +9,6 @@ RUN apt-get update && \
     apt-get clean 
 
 RUN rm -rf /etc/init.d/arpwatch && \
-    rm -rf /etc/services.d/arpwatch && \
-    rm -rf /usr/share/arpwatch/ethercodes.dat
-
+    rm -rf /etc/services.d/arpwatch
+	
 ADD s6 /
-ADD ethercodes.db /var/lib/arpwatch/

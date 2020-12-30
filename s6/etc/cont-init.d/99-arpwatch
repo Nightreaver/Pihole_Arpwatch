@@ -10,4 +10,4 @@ if [ ! -f /var/lib/arpwatch/arp.dat ]; then
 fi
 
 echo "[✓] Pulling latest ethercodes.db from linuxnet.ca"
-curl -L -so /usr/share/arpwatch/ethercodes.dat https://linuxnet.ca/ieee/oui/ethercodes.dat
+curl -L -so /var/lib/arpwatch/ethercodes.db https://linuxnet.ca/ieee/oui/ethercodes.dat
